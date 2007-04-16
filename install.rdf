@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>{ea52486f-29d0-45b9-bd1b-ef14adb44da2}</em:id>
+    <em:name>ManualJunkAction</em:name>
+    <em:version>0.1</em:version>
+    
+    <!-- Thunderbird -->
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>2.0</em:minVersion>
+        <em:maxVersion>2.0.0.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+    
+    <!-- The contents of the extension //-->
+    <em:file>
+      <Description about="urn:mozilla:extension:file:manualjunkaction.jar">
+        <em:package>content/manualjunkaction/</em:package>
+	<em:locale>locale/en-US/manualjuknaction/</em:locale>
+        <em:skin>skin/classic/manualjunkaction/</em:skin>
+      </Description>
+    </em:file>
+
+    <!-- Front End Integration Hooks (used by Extension Manager)-->
+    <em:description>Introduces an option to set specifically which folder manually marked junk will go to.</em:description>
+    <em:creator>Ryan Lee (ryan@ryanlee.org)</em:creator>
+    <em:iconURL>chrome://manualjunkaction/skin/icon32x32.png</em:iconURL>
+    <em:homepageURL>http://ryanlee.org/software/mozilla/thunderbird/manualjunkaction/</em:homepageURL>
+    <em:type parseType="Integer">2</em:type> <!-- type=extension -->
+  </Description>
+</RDF>

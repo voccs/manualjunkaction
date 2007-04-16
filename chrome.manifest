@@ -1,0 +1,9 @@
+content	manualjunkaction	jar:chrome/manualjunkaction.jar!/content/
+
+overlay	chrome://messenger/content/messenger.xul	chrome://manualjunkaction/content/messenger.xul
+override chrome://messenger/content/preferences/privacy.xul		chrome://manualjunkaction/content/privacy.xul
+override chrome://messenger/content/am-junk.xul		chrome://manualjunkaction/content/am-junk.xul
+
+skin	manualjunkaction	classic/1.0	jar:chrome/manualjunkaction.jar!/skin/
+
+locale	manualjunkaction	en-US	jar:chrome/manualjunkaction.jar!/locale/en-US/
