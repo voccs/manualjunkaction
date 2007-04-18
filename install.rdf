@@ -21,15 +21,14 @@
     <em:file>
       <Description about="urn:mozilla:extension:file:manualjunkaction.jar">
         <em:package>content/manualjunkaction/</em:package>
-	<em:locale>locale/en-US/manualjuknaction/</em:locale>
+	<em:locale>locale/en-US/manualjunkaction/</em:locale>
         <em:skin>skin/classic/manualjunkaction/</em:skin>
       </Description>
     </em:file>
 
     <!-- Front End Integration Hooks (used by Extension Manager)-->
-    <em:description>Introduces an option to set specifically which folder manually marked junk will go to.</em:description>
+    <em:description>Introduces an option to specifically set which folder manually marked junk will go to per account (see 'Junk Settings' under 'Account Settings').  Will not work if global preference for doing something different under manual marking is not enabled.</em:description>
     <em:creator>Ryan Lee (ryan@ryanlee.org)</em:creator>
-    <em:iconURL>chrome://manualjunkaction/skin/icon32x32.png</em:iconURL>
     <em:homepageURL>http://ryanlee.org/software/mozilla/thunderbird/manualjunkaction/</em:homepageURL>
     <em:type parseType="Integer">2</em:type> <!-- type=extension -->
   </Description>
