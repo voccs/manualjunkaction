@@ -148,4 +148,6 @@
                         oncommand="onActionTargetChange(this, 'server.manualSpamActionTargetFolder');"/>
         </hbox>
 
+        <label id="mjaWarning" value="&manualJunkActionWarning.label;" hidden="true" class="warning" />
+
 </page>

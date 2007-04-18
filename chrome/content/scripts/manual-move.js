@@ -59,7 +59,7 @@ ManualJunkAction.move = function() {
 
 		// stop if the default is on... can't control how it
 		// does message moving
-		if (!useDefault)
+		if (useDefault)
 			return;
 
 		// account-specific actions enabled for manually marking

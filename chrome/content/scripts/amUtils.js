@@ -14,6 +14,10 @@ MJA.updateManualMarkMode = function(aEnable) {
 		document.getElementById('broadcaster_manualMoveMode').removeAttribute('disabled');
 	else
 		document.getElementById('broadcaster_manualMoveMode').setAttribute('disabled', "true");    
+	var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+	var defaultOn = prefs.getBoolPref("mail.spam.manualMark");
+	if (defaultOn)
+		document.getElementById('mjaWarning').setAttribute('hidden', aEnable ? "true" : "false");
 };
 
 // replace the existing onInit with mine
