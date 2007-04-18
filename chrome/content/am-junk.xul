@@ -4,6 +4,7 @@
 -->
 
 <?xml-stylesheet href="chrome://messenger/skin/accountManage.css" type="text/css"?>
+<?xml-stylesheet href="chrome://manualjunkaction/skin/am-junk.css" type="text/css"?>
 <?xul-overlay href="chrome://messenger/content/msgFolderPickerOverlay.xul"?>
 
 <!DOCTYPE window [
@@ -148,6 +149,6 @@
                         oncommand="onActionTargetChange(this, 'server.manualSpamActionTargetFolder');"/>
         </hbox>
 
-        <label id="mjaWarning" value="&manualJunkActionWarning.label;" hidden="true" class="warning" />
+        <label id="mjaWarning" hidden="true" class="warning">&manualJunkActionWarning.label;</label>
 
 </page>

@@ -1,2 +1,2 @@
 <!ENTITY manualMarkModeFolder.label "Move to other folder: ">
-<!ENTITY manualJunkActionWarning.label "You must disable global preferences for what to do with manually marked junk for this preference to function.  It is currently enabled.  See Preferences &gt; Privacy &gt; Junk &gt; to disable it.">
+<!ENTITY manualJunkActionWarning.label "You must disable global preferences for what to do with manually marked junk for this preference to function.  It is currently enabled.  See Preferences &gt; Privacy &gt; Junk to disable it.">
