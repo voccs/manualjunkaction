@@ -59,19 +59,20 @@ ManualJunkAction.move = function() {
 
 		// stop if the default is on... can't control how it
 		// does message moving
-		if (useDefault)
+		if (!useDefault)
 			return;
 
 		// account-specific actions enabled for manually marking
 		prefKey = "mail.server." + sKey + ".manualMark";
 		var useAccountFolder = prefs.getBoolPref(prefKey);
 
-		// folder to move to if enabled
-		prefKey = "mail.server."+sKey+".manualSpamActionTargetFolder";
-		var manualFolderURI = prefs.getCharPref(prefKey);
+		if (useAccountFolder) {
+			// folder to move to if enabled
+			prefKey = "mail.server."+sKey+".manualSpamActionTargetFolder";
+			var manualFolderURI = prefs.getCharPref(prefKey);
 
-		if (useAccountFolder)
 			MsgMoveMessage(manualFolderURI);
+		}
 	}
 }
 

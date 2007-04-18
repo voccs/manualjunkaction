@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE overlay [
+<!ENTITY % brandDTD SYSTEM "chrome://branding/locale/brand.dtd">
+<!ENTITY % privacyDTD SYSTEM "chrome://messenger/locale/preferences/privacy.dtd">
+<!ENTITY % mjaPrivacyDTD SYSTEM "chrome://manualjunkaction/locale/privacy.dtd">
+%brandDTD;
+%privacyDTD;
+%mjaPrivacyDTD;
+]>
+
+<overlay id="PrivacyPaneOverlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+         xmlns:nc="http://home.netscape.com/NC-rdf#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+           
+  <prefpane id="panePrivacy" onpaneload="gPrivacyPane.init();">
+    <script type="application/x-javascript" src="chrome://messenger/content/preferences/privacy.js"/>
+
+    <stringbundle id="bundlePreferences" src="chrome://messenger/locale/preferences/preferences.properties"/>
+
+    <preferences>
+      <preference id="mail.preferences.privacy.selectedTabIndex"
+                  name="mail.preferences.privacy.selectedTabIndex" type="int"/>
+      <preference id="mail.spam.manualMark" 
+                  name="mail.spam.manualMark" 
+                  type="bool"/>
+      <preference id="mail.spam.manualMarkMode"
+                  name="mail.spam.manualMarkMode"
+                  type="int"/>
+      <preference id="mail.spam.markAsReadOnSpam"
+                  name="mail.spam.markAsReadOnSpam"
+                  type="bool"/>
+      <preference id="mail.spam.logging.enabled" 
+                  name="mail.spam.logging.enabled" 
+                  type="bool"/>
+      <preference id="mail.phishing.detection.enabled"
+                  name="mail.phishing.detection.enabled"
+                  type="bool"/>
+      <preference id="browser.safebrowsing.enabled"
+                  name="browser.safebrowsing.enabled"
+                  type="bool"/>
+      <preference id="mailnews.downloadToTempFile"
+                  name="mailnews.downloadToTempFile"
+                  type="bool"/>                   
+      <preference id="wallet.crypto"
+                  name="wallet.crypto"
+                  type="bool"/>
+      <preference id="pref.privacy.disable_button.view_passwords"
+                  name="pref.privacy.disable_button.view_passwords"
+                  type="bool"/>
+    </preferences>
+
+    <tabbox id="privacyPrefs" flex="1" onselect="gPrivacyPane.tabSelectionChanged();">
+      <tabs>
+        <tab label="&itemJunk.label;"/>
+        <tab label="&itemPhishing.label;"/>
+        <tab label="&itemAntiVirus.label;"/>
+        <tab label="&itemPasswords.label;"/>
+      </tabs>
+      
+      <tabpanels flex="1">        
+        <tabpanel orient="vertical">
+          <description>&junkMail.intro;</description>
+          <class separator="thin"/>
+          
+          <checkbox id="manualMark" 
+                    preference="mail.spam.manualMark"
+                    oncommand="gPrivacyPane.updateManualMarkMode(this.checked);"
+                    label="&manualMark.label;"/>
+          
+          <radiogroup id="manualMarkMode" class="indent"
+                      preference="mail.spam.manualMarkMode">
+            <radio id="manualMarkMode0" value="0" label="&manualMarkModeMove.label;"/>
+            <radio id="manualMarkMode1" value="1" label="&manualMarkModeDelete.label;"/>
+            <label value="&mjaPrefOverrideNotice.label;" />
+          </radiogroup>
+          
+          <checkbox id="markAsReadOnSpam" label="&markAsReadOnSpam.label;" 
+                    accesskey="&markAsReadOnSpam.acesskey;"
+                    preference="mail.spam.markAsReadOnSpam"/>
+
+          <hbox align="start">
+            <checkbox id="enableJunkLogging" label="&enableJunkLogging.label;"
+                      oncommand="gPrivacyPane.updateJunkLogButton(this.checked);" 
+                      preference="mail.spam.logging.enabled" 
+                      accesskey="&enableJunkLogging.accesskey;"/>
+            <spacer flex="1"/>
+            <button id="openJunkLogButton" label="&openJunkLog.label;" accesskey="&openJunkLog.accesskey;" 
+                    oncommand="gPrivacyPane.openJunkLog();"/>
+          </hbox>
+          <hbox align="start">
+            <spacer flex="1"/>
+            <button label="&resetTrainingData.label;" accesskey="&resetTrainingData.accesskey;" 
+                    oncommand="gPrivacyPane.resetTrainingData()"/>
+          </hbox>          
+        </tabpanel>
+        
+        <!-- Phishing Detector --> 
+        <tabpanel orient="vertical">
+          <description>&phishingDetector1.intro;</description>
+          <class separator="thin"/>
+          <checkbox id="enablePhishingDetector"
+                    label="&enablePhishingDetector1.label;" accesskey="&enablePhishingDetector1.accesskey;"
+                    oncommand="gPrivacyPane.updateDownloadedPhishingListState()" 
+                    preference="mail.phishing.detection.enabled"/>
+<!--          
+          <checkbox id="useDownloadedList" class="indent" label="&useDownloadedList.label;"
+                    accesskey="&useDownloadedList.accesskey;" 
+                    preference="browser.safebrowsing.enabled"/>
+-->                    
+        </tabpanel>
+
+        <!-- Anti Virus --> 
+        <tabpanel orient="vertical">
+          <description>&antiVirus.intro;</description>
+          <class separator="thin"/>
+          <checkbox id="enableAntiVirusQuaruntine"
+                    label="&antiVirus.label;" accesskey="&antiVirus.accesskey;"
+                    preference="mailnews.downloadToTempFile"/>
+
+        </tabpanel>
+        
+        <!-- Password --> 
+
+        <tabpanel orient="vertical"> 
+          <description>&savedPasswords.intro;</description>
+          <checkbox id="encryptEnabled" label="&encryptEnabled.label;" accesskey="&encryptEnabled.accesskey;"
+                    preference="wallet.crypto" oncommand="gPrivacyPane.initReencryptCallback();"/>
+          <separator/>
+          <hbox align="start">
+            <description flex="1">&masterPassword.intro;</description>
+            <vbox>
+              <button id="setMasterPassword" 
+                      label="&setMasterPassword.label;" accesskey="&setMasterPassword.accesskey;"
+                      oncommand="gPrivacyPane.changeMasterPassword();"/>
+              <button id="removeMasterPassword"
+                      label="&removeMasterPassword.label;" accesskey="&removeMasterPassword.accesskey;"
+                      oncommand="gPrivacyPane.removeMasterPassword();"/>
+            </vbox>
+          </hbox>
+          <separator flex="1"/>
+          <hbox>
+            <button label="&editPasswords.label;" accesskey="&editPasswords.accesskey;"
+                    oncommand="gPrivacyPane.viewPasswords();"
+                    preference="pref.privacy.disable_button.view_passwords"/>
+          </hbox>
+        </tabpanel>
+      </tabpanels>
+    </tabbox>
+
+    <separator/>
+
+  </prefpane>
+</overlay>
