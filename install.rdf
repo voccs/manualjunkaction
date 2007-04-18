@@ -6,7 +6,7 @@
   <Description about="urn:mozilla:install-manifest">
     <em:id>{ea52486f-29d0-45b9-bd1b-ef14adb44da2}</em:id>
     <em:name>ManualJunkAction</em:name>
-    <em:version>0.1</em:version>
+    <em:version>0.2</em:version>
     
     <!-- Thunderbird -->
     <em:targetApplication>
