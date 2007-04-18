@@ -52,9 +52,26 @@ ManualJunkAction.move = function() {
 
 		// look up preference for server's manual folder
 		var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-		var prefKey = "mail.server." + sKey + ".manualSpamActionTargetFolder";
+
+		// default actions enabled for manually marking
+		var prefKey = "mail.spam.manualMark";
+		var useDefault = prefs.getBoolPref(prefKey);
+
+		// stop if the default is on... can't control how it
+		// does message moving
+		if (useDefault)
+			return;
+
+		// account-specific actions enabled for manually marking
+		prefKey = "mail.server." + sKey + ".manualMark";
+		var useAccountFolder = prefs.getBoolPref(prefKey);
+
+		// folder to move to if enabled
+		prefKey = "mail.server."+sKey+".manualSpamActionTargetFolder";
 		var manualFolderURI = prefs.getCharPref(prefKey);
-		MsgMoveMessage(manualFolderURI); // mailWindowOverlay.js
+
+		if (useAccountFolder)
+			MsgMoveMessage(manualFolderURI);
 	}
 }
 

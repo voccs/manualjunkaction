@@ -35,6 +35,7 @@
   <separator class="thin"/>
   
   <broadcaster id="broadcaster_moveMode"/>
+  <broadcaster id="broadcaster_manualMoveMode"/>
   
   <label hidden="true"  id="server.spamLevel"
          wsm_persist="true" pref="true" preftype="int" prefattribute="value" genericattr="true"
@@ -45,9 +46,6 @@
   <label hidden="true" id="server.spamActionTargetFolder" 
          wsm_persist="true" pref="true" preftype="string" prefattribute="value" genericattr="true"
          prefstring="mail.server.%serverkey%.spamActionTargetFolder"/>
-  <label hidden="true" id="server.manualSpamActionTargetAccount" 
-         wsm_persist="true" pref="true" preftype="string" prefattribute="value" genericattr="true"
-         prefstring="mail.server.%serverkey%.manualSpamActionTargetAccount"/>
   <label hidden="true" id="server.manualSpamActionTargetFolder" 
          wsm_persist="true" pref="true" preftype="string" prefattribute="value" genericattr="true"
          prefstring="mail.server.%serverkey%.manualSpamActionTargetFolder"/>
@@ -138,34 +136,16 @@
       <label id="purgeLabel" value="&purge2.label;" observes="broadcaster_moveMode" control="server.purgeSpamInterval"/>
     </hbox>
 
-      <checkbox id="manualMark" 
-                prefString="mail.server.%serverkey%.manualMark"
-                oncommand="gPrivacyPane.updateManualMarkMode(this.checked);"
-                label="&manualMark.label;"/>
+   <checkbox id="server.manualMark" 
+             wsm_persist="true" pref="true" preftype="bool" genericattr="true"
+             prefstring="mail.server.%serverkey%.manualMark"
+             oncommand="MJA.updateManualMarkMode(this.checked);"
+             label="&manualMark.label;"/>
           
-      <radiogroup id="manualMarkMode" class="indent"
-                  prefString="mail.server.%serverkey%.manualMarkMode">
-        <grid class="specialFolderPickerGrid indent">
-          <columns>
-            <column/>
-            <column flex="1"/>
-          </columns>
-          <rows>
-            <row>
-              <radio id="manualMarkMode3" value="3" label="&manualMarkModeAccount.label;" observes="broadcaster_moveMode"/>
-              <menulist id="manualTargetAccount" observes="broadcaster_moveMode"
-                        oncommand="onActionTargetChange(this, 'server.manualSpamActionTargetAccount');" />
-            </row>
-            <row>
-              <radio id="manualMarkMode2" value="2" label="&manualMarkModeFolder.label;" observes="broadcaster_moveMode"/>
-              <menulist id="manualTargetFolder" observes="broadcaster_moveMode"
+        <hbox class="indent">
+              <label>&manualMarkModeFolder.label;</label>
+              <menulist flex="1" id="actionTargetFolder2" observes="broadcaster_manualMoveMode"
                         oncommand="onActionTargetChange(this, 'server.manualSpamActionTargetFolder');"/>
-            </row>
-            <row>
-              <radio id="manualMarkMode1" value="1" label="&manualMarkModeDelete.label;"/>
-            </row>
-          </rows>
-        </grid>
-      </radiogroup>
+        </hbox>
 
 </page>
