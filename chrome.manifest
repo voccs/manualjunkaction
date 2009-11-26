@@ -6,3 +6,4 @@ override chrome://messenger/content/am-junk.xul		chrome://manualjunkaction/conte
 skin	manualjunkaction	classic/1.0	jar:chrome/manualjunkaction.jar!/skin/
 
 locale	manualjunkaction	en-US	jar:chrome/manualjunkaction.jar!/locale/en-US/
+locale	manualjunkaction	pt-BR	jar:chrome/manualjunkaction.jar!/locale/pt-BR/
