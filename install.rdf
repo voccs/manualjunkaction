@@ -29,6 +29,7 @@
     <!-- Front End Integration Hooks (used by Extension Manager)-->
     <em:description>Introduces an option to specifically set which folder manually marked junk will go to per account (see 'Junk Settings' under 'Account Settings').  Will not work if global preference for doing something different under manual marking is not enabled.</em:description>
     <em:creator>Ryan Lee (ryan@ryanlee.org)</em:creator>
+    <em:translator>Edgard Dias Magalhaes</em:translator>
     <em:homepageURL>http://ryanlee.org/software/mozilla/thunderbird/manualjunkaction/</em:homepageURL>
     <em:type parseType="Integer">2</em:type> <!-- type=extension -->
   </Description>
