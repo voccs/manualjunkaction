@@ -1,56 +1,46 @@
 var MJA = {};
 
-MJA.init = function(aPageId, aServerId) {
-	var manualActionTargetFolder = document.getElementById('server.manualSpamActionTargetFolder').value;
-	if (!manualActionTargetFolder) {
-		manualActionTargetFolder = parent.accountManager.localFoldersServer.serverURI + "/Junk";
-		document.getElementById('server.manualSpamActionTargetFolder').value = manualActionTargetFolder;
-	}
-	SetFolderPicker(manualActionTargetFolder, 'actionTargetFolder2');
+MJA.init = function() {
+    var manualActionTargetFolder = document.getElementById('server.manualSpamActionTargetFolder').value;
+    var am = Components.classes["@mozilla.org/messenger/account-manager;1"]
+                       .getService(Components.interfaces.nsIMsgAccountManager);
+    if (!manualActionTargetFolder) {
+        manualActionTargetFolder = am.localFoldersServer.serverURI + "/Junk";
+        document.getElementById('server.manualSpamActionTargetFolder').value = manualActionTargetFolder;
+    }
+
+    try {
+        var folder = GetMsgFolderFromUri(manualActionTargetFolder);
+        var longFolderName = document.getElementById("bundle_messenger")
+                                .getFormattedString("verboseFolderFormat",
+                                [folder.prettyName, folder.server.prettyName]);
+        document.getElementById("manualActionTargetFolder")
+            .setAttribute("label", longFolderName);
+    } catch (e) {  // OK for folder to not exist
+    }
+
+    MJA.updateManualMarkMode(document.getElementById('server.manualMark').checked);
 };
 
 MJA.updateManualMarkMode = function(aEnable) {
-	if (aEnable)
-		document.getElementById('broadcaster_manualMoveMode').removeAttribute('disabled');
-	else
-		document.getElementById('broadcaster_manualMoveMode').setAttribute('disabled', "true");    
-	var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-	var defaultOn = prefs.getBoolPref("mail.spam.manualMark");
-	document.getElementById('mjaWarning').setAttribute('hidden', (aEnable && defaultOn) ? "false" : "true");
+    if (aEnable) {
+        document.getElementById('broadcaster_manualMoveMode').setAttribute('disabled', false);
+    } else {
+        document.getElementById('broadcaster_manualMoveMode').setAttribute('disabled', true);
+    }
+    var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+    var defaultOn = prefs.getBoolPref("mail.spam.manualMark");
+    document.getElementById('mjaWarning').setAttribute('hidden', (aEnable && defaultOn) ? "false" : "true");
 };
 
-// replace the existing onInit with mine
-function onInit(aPageId, aServerId) {
-	// manually adjust several pref UI elements
-	document.getElementById('spamLevel').checked = document.getElementById('server.spamLevel').value > 0;
-    
-	var spamActionTargetAccount = document.getElementById('server.spamActionTargetAccount').value;
-	if (!spamActionTargetAccount) {
-		var server = GetMsgFolderFromUri(aServerId, false).server;
-		if (server.canCreateFoldersOnServer && server.canSearchMessages)
-			spamActionTargetAccount = parent.pendingServerId;
-		else
-			spamActionTargetAccount = parent.accountManager.localFoldersServer.serverURI;
-		document.getElementById('server.spamActionTargetAccount').value = spamActionTargetAccount;
-	}
-	SetFolderPicker(spamActionTargetAccount, 'actionTargetAccount');
-	var spamActionTargetFolder = document.getElementById('server.spamActionTargetFolder').value;
-	if (!spamActionTargetFolder) {
-		spamActionTargetFolder = parent.accountManager.localFoldersServer.serverURI + "/Junk";
-		document.getElementById('server.spamActionTargetFolder').value = spamActionTargetFolder;
-	}
-	SetFolderPicker(spamActionTargetFolder, 'actionTargetFolder');
-  
-	// set up the whitelist UI
-	document.getElementById("whiteListAbURI").value = document.getElementById("server.whiteListAbURI").value;
+MJA.load = function() {
+    MJA.init();
+    window.addEventListener("unload", MJA.unload, false);
+};
 
-	// set up trusted IP headers
-	var serverFilterList = document.getElementById("useServerFilterList");
-	serverFilterList.value = document.getElementById("server.serverFilterName").value;
-	if (!serverFilterList.selectedItem)
-		serverFilterList.selectedIndex = 0;
+MJA.unload = function() {
+    window.removeEventListener("load", MJA.load);
+    window.removeEventListener("unload", MJA.unload);
+};
 
-	updateMoveTargetMode(document.getElementById('server.moveOnSpam').checked);
-	MJA.init(aPageId, aServerId);
-	MJA.updateManualMarkMode(document.getElementById('server.manualMark').checked);
-}
+window.addEventListener("load", MJA.load, false);

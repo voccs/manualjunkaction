@@ -38,7 +38,7 @@ ManualJunkAction.onUnload = function() {
 
 ManualJunkAction.move = function() {
 	// get current selected messages
-	var uris = GetSelectedMessages();
+	var uris = gFolderDisplay.selectedMessageUris;
 	for each (var uri in uris) {
 		var hdr = messenger.msgHdrFromURI(uri);
 		var origin = hdr.getStringProperty("junkscoreorigin");
@@ -71,7 +71,7 @@ ManualJunkAction.move = function() {
 			prefKey = "mail.server."+sKey+".manualSpamActionTargetFolder";
 			var manualFolderURI = prefs.getCharPref(prefKey);
 
-			MsgMoveMessage(manualFolderURI);
+			MsgMoveMessage(GetMsgFolderFromUri(manualFolderURI));
 		}
 	}
 }

@@ -1,7 +1,7 @@
 content	manualjunkaction	jar:chrome/manualjunkaction.jar!/content/
 
 overlay	chrome://messenger/content/messenger.xul	chrome://manualjunkaction/content/messenger.xul
-override chrome://messenger/content/am-junk.xul		chrome://manualjunkaction/content/am-junk.xul
+overlay chrome://messenger/content/am-junk.xul		chrome://manualjunkaction/content/am-junk.xul
 
 skin	manualjunkaction	classic/1.0	jar:chrome/manualjunkaction.jar!/skin/
 
