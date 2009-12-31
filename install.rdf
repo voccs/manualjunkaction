@@ -33,5 +33,12 @@
     <em:homepageURL>http://ryanlee.org/software/mozilla/thunderbird/manualjunkaction/</em:homepageURL>
     <em:iconURL>chrome://manualjunkaction/skin/icon32x32.png</em:iconURL>
     <em:type parseType="Integer">2</em:type> <!-- type=extension -->
+    <em:localized>
+      <Description>
+        <em:locale>fr-FR</em:locale>
+        <em:name>ManualJunkAction</em:name>
+        <em:description>Donne la possibilité de préciser le dossier dans lequel on désire que soient stockés les courriers indésirables, pour chaque compte.</em:description>
+      </Description>
+    </em:localized>
   </Description>
 </RDF>
