@@ -40,5 +40,12 @@
         <em:description>Donne la possibilité de préciser le dossier dans lequel on désire que soient stockés les courriers indésirables, pour chaque compte.</em:description>
       </Description>
     </em:localized>
+    <em:localized>
+      <Description>
+        <em:locale>pt-BR</em:locale>
+        <em:name>ManualJunkAction</em:name>
+        <em:description>Introduz a opção de definir que pasta manualmente marcada como lixo servirá para cada conta.</em:description>
+      </Description>
+    </em:localized>
   </Description>
 </RDF>
