@@ -8,3 +8,4 @@ skin	manualjunkaction	classic/1.0	jar:chrome/manualjunkaction.jar!/skin/
 locale	manualjunkaction	en-US	jar:chrome/manualjunkaction.jar!/locale/en-US/
 locale	manualjunkaction	pt-BR	jar:chrome/manualjunkaction.jar!/locale/pt-BR/
 locale  manualjunkaction	fr-FR	jar:chrome/manualjunkaction.jar!/locale/fr-FR/
+locale  manualjunkaction	sr		jar:chrome/manualjunkaction.jar!/locale/sr/
