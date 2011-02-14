@@ -7,6 +7,7 @@
     <em:id>{ea52486f-29d0-45b9-bd1b-ef14adb44da2}</em:id>
     <em:name>ManualJunkAction</em:name>
     <em:version>0.3</em:version>
+    <em:type>2</em:type> <!-- type=extension -->
     
     <!-- Thunderbird -->
     <em:targetApplication>
@@ -17,26 +18,18 @@
       </Description>
     </em:targetApplication>
     
-    <!-- The contents of the extension //-->
-    <em:file>
-      <Description about="urn:mozilla:extension:file:manualjunkaction.jar">
-        <em:package>content/manualjunkaction/</em:package>
-	<em:locale>locale/en-US/manualjunkaction/</em:locale>
-        <em:skin>skin/classic/manualjunkaction/</em:skin>
-      </Description>
-    </em:file>
-
     <!-- Front End Integration Hooks (used by Extension Manager)-->
     <em:description>Introduces an option to specifically set which folder manually marked junk will go to per account.</em:description>
     <em:creator>Ryan Lee (ryan@ryanlee.org)</em:creator>
     <em:translator>Edgard Dias Magalhaes</em:translator>
     <em:translator>ДакСРБИЈА</em:translator>
+    <em:translator>Luana Di Muzio - BabelZilla</em:translator>
     <em:homepageURL>http://ryanlee.org/software/mozilla/thunderbird/manualjunkaction/</em:homepageURL>
     <em:iconURL>chrome://manualjunkaction/skin/icon32x32.png</em:iconURL>
-    <em:type parseType="Integer">2</em:type> <!-- type=extension -->
+
     <em:localized>
       <Description>
-        <em:locale>fr-FR</em:locale>
+        <em:locale>fr</em:locale>
         <em:name>ManualJunkAction</em:name>
         <em:description>Donne la possibilité de préciser le dossier dans lequel on désire que soient stockés les courriers indésirables, pour chaque compte.</em:description>
       </Description>
@@ -53,6 +46,13 @@
         <em:locale>sr</em:locale>
         <em:name>ManualJunkAction</em:name>
         <em:description>Омогућава да за сваки налог подесите где ће ићи избрисано.</em:description>
+      </Description>
+    </em:localized>
+    <em:localized>
+      <Description>
+        <em:locale>it</em:locale>
+        <em:name>ManualJunkAction</em:name>
+        <em:description>Permette di impostare per ogni singolo account la cartella in cui scaricare la posta indesiderata.</em:description>
       </Description>
     </em:localized>
   </Description>
