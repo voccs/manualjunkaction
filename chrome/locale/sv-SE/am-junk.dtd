@@ -1,0 +1,2 @@
+<!ENTITY manualMarkModeFolder.label "Flytta manuellt märkt skräppost till separat mapp:">
+<!ENTITY manualJunkActionWarning.label "Du måste inaktivera den globala inställningen rörande flyttåtgärd för manuellt märkt skräppost för att detta alternativ skall fungera.  Den är för närvarande aktiverad.  Se Inställningar &gt; Säkerhet &gt; Skräppost för att inaktivera den.">

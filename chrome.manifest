@@ -10,3 +10,4 @@ locale	manualjunkaction	pt-BR	jar:chrome/manualjunkaction.jar!/locale/pt-BR/
 locale  manualjunkaction	fr	jar:chrome/manualjunkaction.jar!/locale/fr/
 locale  manualjunkaction	sr	jar:chrome/manualjunkaction.jar!/locale/sr/
 locale  manualjunkaction	it	jar:chrome/manualjunkaction.jar!/locale/it/
+locale  manualjunkaction	sv-SE	jar:chrome/manualjunkaction.jar!/locale/sv-SE/
