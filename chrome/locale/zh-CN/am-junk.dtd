@@ -1,0 +1,2 @@
+<!ENTITY manualMarkModeFolder.label "移动手动标记的废件的单独目录:">
+<!ENTITY manualJunkActionWarning.label "您必须禁用全局首选项内对手动标记的废件的处理方式以便此首选项生效。它目前已启用。查看 首选项 &gt; 安全 &gt; 废件 来禁用它。">

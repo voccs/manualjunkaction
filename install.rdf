@@ -63,5 +63,12 @@
         <em:description>Ger möjlighet att för varje enskilt konto specificera vilken mapp som manuellt märkt skräppost skall flyttas till.</em:description>
       </Description>
     </em:localized>
+    <em:localized>
+      <Description>
+        <em:locale>zh-CN</em:locale>
+        <em:name>ManualJunkAction</em:name>
+        <em:description>引入一个选项专门用于设置将每个账户手动标记的废件放到哪个目录。</em:description>
+      </Description>
+    </em:localized>
   </Description>
 </RDF>
