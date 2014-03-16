@@ -2,8 +2,6 @@
 <?xml-stylesheet href="chrome://manualjunkaction/skin/am-junk.css" type="text/css"?>
 
 <!DOCTYPE window [
-<!ENTITY % pickerDTD SYSTEM "chrome://messenger/locale/msgFolderPickerOverlay.dtd">
-%pickerDTD;
 <!ENTITY % manualDTD SYSTEM "chrome://manualjunkaction/locale/am-junk.dtd" >
 %manualDTD;
 ]>
@@ -39,7 +37,7 @@
               oncommand="onActionTargetChange(event, 'server.manualSpamActionTargetFolder');">
       <menupopup id="manualActionFolderPopup" type="folder" mode="junk"
                  showFileHereLabel="true"
-                 fileHereLabel="&filemessageschoosethis.label;"/>
+                 showAccountsFileHere="false"/>
     </menulist>
 
     <label id="mjaWarning" hidden="true" class="indent warning">&manualJunkActionWarning.label;</label>
